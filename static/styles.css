@@ -1,0 +1,39 @@
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+body{
+
+}
+
+.header{
+    background-color: #008c41;
+    color: white;
+    padding: 0.5em;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6em;
+    margin: 5em 7em;
+    background-color: purple;
+    color: white;
+    border-radius: 20px;
+    background-image: url("https://www.transparenttextures.com/patterns/fabric-1-dark.png");
+}
+
+.picker-text{
+   justify-content: center;
+   margin: 1em;
+}
+
+.file-picker{
+    justify-content: center;
+    margin: 1em;
+}
+
+.file-picker input{
+    margin-bottom: 0.5em;
+}

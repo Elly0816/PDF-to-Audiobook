@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Text to Speech</title>
+</head>
+<body>
+    <div class="header">
+        <h1>TEXT TO SPEECH</h1>
+    </div>
+
+    <div class="content">
+        <div class="picker-text">
+            <h3>Pick a file to convert</h3>
+        </div>
+        <div class="file-picker">
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
