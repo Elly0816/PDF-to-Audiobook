@@ -61,7 +61,7 @@ def upload_file():
                         data = convert(url, api_key, text, 'en-gb', 'mp3')
                         file_to_send = f'{folder}/{download_name}'
                         open(file_to_send, 'bx').write(data.content)
-                        return send_file(f'uploads/{download_name}',
+                        return send_file(f'{folder}/{download_name}',
                                          as_attachment=True,
                                          download_name=f'{download_name}.mp3')
         return redirect("/")
