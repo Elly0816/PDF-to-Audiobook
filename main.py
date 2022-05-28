@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from pdfminer.high_level import extract_text
 from werkzeug.utils import secure_filename
 import requests
-from time import sleep
 
 
 load_dotenv()
@@ -15,6 +14,7 @@ app.secret_key = os.getenv('SECRET_KEY')
 
 api_key = os.getenv('API_KEY')
 url = 'http://api.voicerss.org'
+folder = os.getenv('UPLOAD_FOLDER')
 
 
 
@@ -23,7 +23,7 @@ def home():
     """Home route deletes all files in the uploads directory and then
     renders the index.html page"""
     if request.method == 'GET':
-        with os.scandir(f'{os.curdir}/uploads') as files:
+        with os.scandir(folder) as files:
             for file in files:
                 os.remove(file)
         return render_template('index.html')
@@ -51,7 +51,7 @@ def upload_file():
             download_name = file.filename.split(".")[0]
             if extension in ALLOWED_EXTENSIONS:
                 filename = secure_filename(file.filename)
-                filepath = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
+                filepath = os.path.join(folder, filename)
                 file.save(filepath)
                 match extension:
                     case 'pdf':
@@ -59,7 +59,7 @@ def upload_file():
                         os.remove(filepath)
                         print(text)
                         data = convert(url, api_key, text, 'en-gb', 'mp3')
-                        file_to_send = f'uploads/{download_name}'
+                        file_to_send = f'{folder}/{download_name}'
                         open(file_to_send, 'bx').write(data.content)
                         return send_file(f'uploads/{download_name}',
                                          as_attachment=True,
