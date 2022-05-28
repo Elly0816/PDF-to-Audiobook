@@ -7,7 +7,7 @@ Create a folder for temporary file storage
 
 Application is not live yet
 
-**ENV VARIBLES**
-api_key to the voice rss api
-flask secret key
+**ENV VARIBLES**:
+api_key to the voice rss api,
+flask secret key,
 folder name
